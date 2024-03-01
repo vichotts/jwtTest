@@ -1,5 +1,6 @@
 package com.processo.seletivo.itau.service.impl;
 
+import com.processo.seletivo.itau.dto.PayloadJwt;
 import com.processo.seletivo.itau.exception.ClaimException;
 import com.processo.seletivo.itau.service.JwtService;
 import org.json.JSONObject;
@@ -16,16 +17,14 @@ public class jwtServiceImpl implements JwtService {
     @Autowired
     private ValidationClaimsServiceImpl validationClaims;
 
-    private String ok = "verdadeiro";
-    private String nOk = "falso";
-    private String payloadContent;
-    private String role;
-    private Integer seed;
-    private String name;
+    private final String ok = "verdadeiro";
+    private final String nOk = "falso";
 
     @Override
     public Optional<String> jwtResp(String jwtToken) {
     	try {
+
+            PayloadJwt payloadJwt = new PayloadJwt();
 
         String[] token = jwtToken.split("\\.");
 
@@ -34,20 +33,19 @@ public class jwtServiceImpl implements JwtService {
             throw new ClaimException("Token invalid");
         }
 
-        payloadContent = new String(Base64.getDecoder().decode(token[1]));
+        payloadJwt.setPayloadContent(new String(Base64.getDecoder().decode(token[1])));
         
-        JSONObject payload = new JSONObject(payloadContent);
+        JSONObject payload = new JSONObject(payloadJwt.getPayloadContent());
 
             if(payload.length() !=3 ){
 
                 return Optional.of(nOk) ;
             }
+            payloadJwt.setRole(payload.getString("Role")) ;
+            payloadJwt.setSeed(payload.getInt("Seed"));
+            payloadJwt.setName(payload.getString("Name"));
 
-        role = payload.getString("Role");
-        seed = payload.getInt("Seed");
-        name = payload.getString("Name");
-
-            if(validationClaims.validClaims(role,seed,name) == Boolean.TRUE){
+            if(validationClaims.validClaims(payloadJwt.getRole(),payloadJwt.getSeed(),payloadJwt.getName()) == Boolean.TRUE){
                 return Optional.of(ok);
             }else
                 return Optional.of(nOk);
