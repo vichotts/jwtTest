@@ -1,4 +1,4 @@
-FROM 17-openjdk-alpine
+FROM eclipse-temurin
 
 WORKDIR /app
 COPY target/JWT-Itau-1.0.0.jar JWT-Itau-1.0.0.jar
