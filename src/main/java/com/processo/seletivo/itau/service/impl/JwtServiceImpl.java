@@ -30,7 +30,6 @@ public class JwtServiceImpl implements JwtService {
 
             throw new Exception();
         }
-
         payloadJwt.setPayloadContent(new String(Base64.getDecoder().decode(token[1])));
         
         JSONObject payload = new JSONObject(payloadJwt.getPayloadContent());
