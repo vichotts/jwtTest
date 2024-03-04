@@ -39,6 +39,7 @@ public class JwtServiceImpl implements JwtService {
 
                 return Optional.of(nOk) ;
             }
+
             payloadJwt.setRole(payload.getString("Role")) ;
             payloadJwt.setSeed(payload.getInt("Seed"));
             payloadJwt.setName(payload.getString("Name"));
