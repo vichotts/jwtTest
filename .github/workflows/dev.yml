@@ -19,7 +19,7 @@ jobs:
       - name: Build Project
         run: mvn clean install
       - name: Login Docker
-        run: docker login docker login ghcr.io -u USERNAME --password-stdin
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build docker
         run: docker build -t vichotts/JWT-Itau .
       - name: Push image Docker
