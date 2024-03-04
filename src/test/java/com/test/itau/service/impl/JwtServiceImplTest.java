@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class JwtServiceImplTest {
-
     @InjectMocks
     JwtServiceImpl jwtService;
 
