@@ -1,7 +1,6 @@
 package com.processo.seletivo.itau.service.impl;
 
 import com.processo.seletivo.itau.dto.PayloadJwt;
-import com.processo.seletivo.itau.exception.ClaimException;
 import com.processo.seletivo.itau.service.JwtService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import java.util.Optional;
 
 //LOG4J
 @Service
-public class jwtServiceImpl implements JwtService {
+public class JwtServiceImpl implements JwtService {
 
     @Autowired
     private ValidationClaimsServiceImpl validationClaims;
@@ -23,14 +22,13 @@ public class jwtServiceImpl implements JwtService {
     @Override
     public Optional<String> jwtResp(String jwtToken) {
     	try {
-
-            PayloadJwt payloadJwt = new PayloadJwt();
+        PayloadJwt payloadJwt = new PayloadJwt();
 
         String[] token = jwtToken.split("\\.");
 
         if(token.length !=3 ){
 
-            throw new ClaimException("Token invalid");
+            throw new Exception();
         }
 
         payloadJwt.setPayloadContent(new String(Base64.getDecoder().decode(token[1])));
