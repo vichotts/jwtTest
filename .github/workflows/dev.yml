@@ -20,6 +20,6 @@ jobs:
       - name: Login Docker
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
       - name: Build docker
-        run: docker build -t vichotts/jwt-itau.
+        run: docker build -t vichotts/jwt-itau .
       - name: Push image Docker
         run: docker push vichotts/jwt-itau
