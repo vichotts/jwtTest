@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.test.itau</groupId>
 	<artifactId>JWT-Itau</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>JWT-Itau</name>
 	<description>Teste vaga Itau</description>
 	<properties>
