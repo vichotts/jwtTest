@@ -18,7 +18,6 @@ public class JwtServiceImplTest {
 
     @Spy
     ValidationClaimsServiceImpl validationClaims;
-
     @Test
     void jwtOk(){
         String jwt = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJTZWVkIjoiNzg0MSIsIk5hbWUiOiJUb25pbmhvIEFyYXVqbyJ9.QY05sIjtrcJnP533kQNk8QXcaleJ1Q01jWY_ZzIZuAg";
