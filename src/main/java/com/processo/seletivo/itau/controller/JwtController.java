@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-//LOG4J
-
-
 @RestController
 @RequestMapping("/jwt")
 public class JwtController {

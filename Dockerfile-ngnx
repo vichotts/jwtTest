@@ -1,0 +1,2 @@
+FROM nginx
+COPY jwt-token usr/share/nginx/java/JwtItauApplication
