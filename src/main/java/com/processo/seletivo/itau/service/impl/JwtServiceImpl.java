@@ -2,6 +2,8 @@ package com.processo.seletivo.itau.service.impl;
 
 import com.processo.seletivo.itau.dto.PayloadJwt;
 import com.processo.seletivo.itau.service.JwtService;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 //LOG4J
 @Service
+@Slf4j
 public class JwtServiceImpl implements JwtService {
 
     @Autowired
@@ -21,6 +24,9 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public Optional<String> jwtResp(String jwtToken) {
+
+        log.debug("OUT-SERVICE.JwtServiceImpl");
+
     	try {
         PayloadJwt payloadJwt = new PayloadJwt();
 
@@ -53,8 +59,6 @@ public class JwtServiceImpl implements JwtService {
             return Optional.of(nOk);
 		}
 
-
     }
-
 
 }

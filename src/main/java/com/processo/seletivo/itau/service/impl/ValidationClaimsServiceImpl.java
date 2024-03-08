@@ -2,15 +2,20 @@ package com.processo.seletivo.itau.service.impl;
 
 import com.processo.seletivo.itau.service.ValidationClaimsService;
 import java.util.regex.*;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ValidationClaimsServiceImpl implements ValidationClaimsService {
 
     Boolean verdadeiro = Boolean.TRUE;
     Boolean falso = Boolean.FALSE;
     @Override
     public boolean validClaims(String role, Integer seed, String name) {
+
+        ValidationClaimsServiceImpl.log.debug("IN-SERVICE.ValidationClaimsServiceImpl");
 
         return validateRole(role) == verdadeiro
                 && validateSeed(seed) == verdadeiro
